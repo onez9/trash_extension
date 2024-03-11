@@ -1,0 +1,9 @@
+{
+  "name": "com.example.app2",
+  "description": "Описание этой блядины",
+  "path": "/home/user/app2.py",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://igmbclkdmkdppjppkhhelmmggfbcoohb/"
+  ]
+}

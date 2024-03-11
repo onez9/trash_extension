@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "MyExt",
+  "description": "Управление вкладками",
+  "version": "1.0.0",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/logo16.png",
+      "48": "images/logo48.png",
+      "128": "images/logo128.png"
+    },
+    "default_popup": "popup.html"
+
+  },
+
+  "permissions": [
+    "tabs", 
+    "tabGroups", 
+    "power", 
+    "system.cpu", 
+    "downloads", 
+    "scripting", 
+    "webNavigation", 
+    "storage", 
+    "contextMenus",
+    "nativeMessaging",
+    "notifications"
+  ]
+}

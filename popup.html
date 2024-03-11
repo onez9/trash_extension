@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Расширение для управления вкладками</title>
+  <link rel="stylesheet" href="style.css">
+  <!--ссылаемся на шрифты, используемые в документе-->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"> -->
+  <!--здесь мы ссылаемся на стили, которые будем использовать в документе, а именно стиль иконок-->
+  <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"> -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'"> -->
+  <script src="popup.js"></script>
+</head>
+<body>
+
+
+
+
+
+  <!--контейнер, содержащий название, логотип и номер версии-->
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col">
+        <img class="w-100 rounded mt-3" src="images/Tux.png">
+        <h1 class="logo">Выберете действие</h1>
+      </div>
+    </div>
+  </div> -->
+  <!--Конец контейнера-->
+  <!--контейнер, содержащий описание функций расширения-->
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <!-- <img class="w-100 rounded mt-3" style="width: 100%; border-radius: 5px;" src="images/Tux.png"> -->
+        <button id="btn1" class="b1 form-control btn btn-success mb-3" >Закрыть все страницы поиска</button></br>
+        <button id="btn2" style="margin-bottom: 5px;" class="b1 form-control btn btn-info mb-3" >Закрыть все newtab's</button></br>
+        <!-- <input  class="b1" type="text" placeholder="Введите шаблон для удаления" /> -->
+        <!-- <button id="btn4" class="b1 form-control btn btn-info mb-3" >Удалить все совпадения</button></br> -->
+        <button id="btn5" class="b1 form-control btn btn-info mb-3" >Спарсить картинки</button></br>
+
+        <!-- <div id="selectedText"></div> -->
+        <button id="btn6" class="b1 form-control btn btn-info mb-3" >Тест кнопки</button></br>
+        <button id="btn7" class="b1 form-control btn btn-info mb-3" >Закрыть все вкладки кроме текущей</button></br>
+        <button id="btn8" class="b1 form-control btn btn-info mb-3" >Закрыть все порносайты</button></br>
+        <a href="#" target="_blank"> Настройки </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- target="_blank" это для открытия страницы на новой вкладке -->
+  <!-- <div class="modal-icons">
+    <div class="flex-container">
+      <div class="flex">
+        <a href="#" target="_blank">
+          <i class="fa fa-globe"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  -->
+  <!--Конец контейнера-->
+  <script src="options.js"></script>
+
+ 
+</body>
+</html>
