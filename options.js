@@ -129,7 +129,6 @@ function delTabsNew() {
 //     if(response.ok){
 //         const imageBlog = await response.blob()
 //         const imageURL = URL.createObjectURL(imageBlog)
-    
 //         const link = document.createElement('a')
 //         link.href = imageURL
 //         let name_file=imageSrc.split('/').slice(3).join('-')
@@ -141,38 +140,44 @@ function delTabsNew() {
 //         console.log("An error occurred while loading the image. 234234234 243423424 234243243o44 234o234")
 //         throw new Error("Image not loaded")
 //     }
-        
-
 // }
+
+
 // chrome.tabs.query({active: true, currentWindow: true}, (tabs)=>{
 //     const currentUrl=tabs[0].url
 //     console.log("Curr")
 // })
+function sleep(ms){
+    return new Promise(resolve=>setTimeout(resolve, ms))
+}
 
+function getRandomInt(min, max){
+    min=Math.ceil(min)
+    max=Math.floor(max)
+    return Math.floor(Math.random()*(max-min+1)) + min
+}
 async function downloadImages() {
     // let number = parseInt(prompt('Укажите номер сета: '))
     // window.localStorage.setItem("zal2342upa", "941473418431")
     let site = /hentaihere.com/
     let link_on_current_page=(await chrome.tabs.query({active: true, currentWindow: true}))[0].url
     // let re=new RegExp('hentai\/d+', 'g')
+    let flag=false
     if(site.test(link_on_current_page)){
-
         try{
             let arr = /(hentai\/\d+)|((?<=S)\d+)/.exec(link_on_current_page)
             console.log("Это массив аррай: ", arr)
             let number = parseInt(prompt("Введите номер: ", (arr)? arr[0] : undefined))
             if(isNaN(number)){
-                throw new Error("Cancel!!!!!!!!!!!!!!!!!!!!!!!!")
+                throw new Error("Cancel!")
             }
             let count = parseInt(prompt('Введите количество: ', 90))
             if(isNaN(count)){
-                throw new Error("Cancel!!!!!!!!!!!!!!!!!!!!!!!!")
+                throw new Error("Cancel!")
             }
-    
-    
             let part=parseInt(prompt('Укажите главу: ', 1))
             if(isNaN(part)){
-                throw new Error("Cancel!!!!!!!!!!!!!!!!!!!!!!!!")
+                throw new Error("Cancel!")
             }
     
             console.log(number, count, part)
@@ -182,41 +187,60 @@ async function downloadImages() {
 
 
             for (let i=1;i<=count;i++){
+                
+                // (async () => {
                 console.log(i, "attempt")
                 // chrome.extension.getBackgroundPage().console.log(i, 'foo');
                 let tmp = (i<10)? '0'+i : i;
                 // downloadImage(`https://hentaicdn.com/hentai/${number}/${part}/ccdn00${tmp}.jpg`)
                 let imageSrc = `https://hentaicdn.com/hentai/${number}/${part}/ccdn00${tmp}.jpg`
-                const response = await fetch(imageSrc)
-                .then(async response => {
-                    try{
-                        console.log("Сработало это говно: ")
-                        // console.log(response)
-                        if(response.ok){
-                            const imageBlog = await response.blob()
-                            const imageURL = URL.createObjectURL(imageBlog)
-                        
-                            const link = document.createElement('a')
-                            link.href = imageURL
-                            let name_file=imageSrc.split('/').slice(3).join('-')
-                            link.download = name_file
-                            document.body.appendChild(link)
-                            link.click()
-                            document.body.removeChild(link)
-                        }else{
-                            console.log("An error occurred while loading the image. 234234234 243423424 234243243o44 234o234")
-                            throw new Error("Image not loaded")
+                // let imageSrc=`https://i3.nhentai.net/galleries/2405026/${i}.jpg`
+                try{
+                    // sleep(getRandomInt(0, 10000))
+                    const response = await fetch(imageSrc)
+                    .then(async response => {
+                        try{
+                            console.log("Сработало это говно: ")
+                            // console.log(response)
+                            if(response.ok){
+                                const imageBlog = await response.blob()
+                                const imageURL = URL.createObjectURL(imageBlog)
+                                const link = document.createElement('a')
+                                link.href = imageURL
+                                let name_file=imageSrc.split('/').slice(3).join('-')
+                                link.download = name_file
+                                document.body.appendChild(link)
+                                link.click()
+                                document.body.removeChild(link)
+
+                            }else{
+                                console.log("An error occurred while loading the image. 234234234 243423424 234243243o44 234o234")
+                                throw new Error("Image not loaded")
+                            }
+                        }catch(e){
+                            // console.log(e)
+                            console.log('ошибка фетча')
+                            flag=true
                         }
-                    }catch(e){
-                        console.log(e)
-                    }
 
-                })
-                // .catch((err)=>{
-                //     console.log(err, "эта залупа сработала во внетреннем catch")
-                // })
+                    }).catch((err)=>{
+                        console.log(324324324234234)
+                        console.log(err)
+                        flag=true
+                    })
+                    // .catch((err)=>{
+                    //     console.log(err, "эта залупа сработала во внетреннем catch")
+                    // })
+                }catch(e){
+                    console.log('сука бля уу')
+                    // flag=true
+                }
 
+                // })()
 
+                // if(flag){
+                //     break
+                // }
 
 
             }
